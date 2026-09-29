@@ -21,3 +21,20 @@ collided with them. Label now sits under the play button.
 
 **Preview:** https://javmartz04-ship-it.github.io/rig-assessment-step/ (repo javmartz04-ship-it/rig-assessment-step)
 **Open:** Javier's reaction; GHL paste version (scope under #rig like the booking page) once approved.
+
+## v1 feedback (2026-09-29), saved as v1.html
+> "Way better... we don't need two buttons... remove the button on top of the video... and the words below that
+> button... where it says call booked step two, remove that too... remove that logo on the very top, just keep the
+> logo on the very bottom... make the headline better... add a little things of like steps... one you booked a call
+> check... step two submit the assessment... step three the call's confirmed... make it more premium, but you are
+> heading in the right direction."
+
+## v2 (2026-09-29)
+- One CTA only, below the video. Top logo and step chip gone; logo lives in the footer.
+- H1 "Your call is booked. / *Now let's make it count.*" Sub: "Watch this 36-second video, then fill out your
+  onboarding assessment. Three minutes now saves thirty on the call." (last line is the old page's own copy).
+- 3-step tracker (01 Call Booked, done, green check / 02 Submit Your Assessment, now, pulsing blue / 03 Call
+  Confirmed) inside a dark glass panel with the CTA, same 960px width as the video frame (edges verified equal).
+  Mobile: steps go vertical with a rail. Risk line carries the old heads-up ("not done in time, rescheduled").
+- First panel pass used the light glass fill and read washed-out blue over the fog; dark fill (#070b17 at .86) fixed it.
+- Mobile H1 emphasis orphaned "count."; script line set to .9em at phone width.

@@ -3,22 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>One More Step Before Your Call | Real Insurance Group</title>
-<meta name="description" content="You're booked. Watch the short video, then complete your onboarding assessment before your call.">
+<title>Complete Your Onboarding | Real Insurance Group</title>
+<meta name="description" content="One final step before your GoHighLevel onboarding call is confirmed. Watch the short video, then complete your onboarding form.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Quintessential&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
 <style>
 /* =====================================================================
-   REAL INSURANCE GROUP · POST-BOOKING ASSESSMENT STEP · v1
+   REAL INSURANCE GROUP · POST-BOOKING ONBOARDING STEP · v3
    ---------------------------------------------------------------------
-   Same skin as the approved specialist booking page (v10 "night + blue fog"):
-   ground #04070f, one blue, Questrial / Quintessential / JetBrains Mono,
-   Montserrat for the RIG wordmark only.
-   VIDEO: GHL media mp4, autoplays muted + looped as a preview. The play button
-   restarts it from 0:00 with sound.
-   FORM: GHL survey lq6V9oxbZIH8Hfw3TSkG, iframe copied byte-for-byte from the
-   live page, opened in a modal. form_embed.js sits right after the iframe.
+   Skin = approved specialist booking page v10 (night #04070f + blue fog + grain,
+   Questrial / Quintessential script / Montserrat wordmark, one blue gradient).
+   VIDEO: assets/onboarding.mp4 = the client's 4K GHL upload (75MB) re-encoded to
+   1080p, faststart. Autoplays muted as a preview; the big play button restarts it
+   from 0:00 with sound; then a real control bar (play/pause, scrub, time, mute).
+   FORM: GHL survey lq6V9oxbZIH8Hfw3TSkG, iframe byte-for-byte from the live page,
+   in a modal. form_embed.js writes visibility:visible + pointer-events:auto INLINE
+   on the iframe, which punches through a hidden modal and swallowed every click on
+   the video in v2. The !important rules on .modal:not(.open) iframe stop that.
    ===================================================================== */
 :root{
   --paper:#04070f;
@@ -43,7 +45,7 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-b);font-size:18px;line-height:1.62;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body.locked{overflow:hidden}
 img,svg{display:block}
-h1{margin:0;font-weight:400;letter-spacing:-.3px}
+h1,h2{margin:0;font-weight:400}
 button{font:inherit;color:inherit}
 .wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 24px}
 .script{font-family:var(--font-s);font-style:italic;font-weight:500}
@@ -51,7 +53,7 @@ button{font:inherit;color:inherit}
 
 #rig{position:relative;min-height:100vh;overflow:hidden;isolation:isolate}
 
-/* ---------- atmosphere (same fog field as the booking page) ---------- */
+/* ---------- atmosphere ---------- */
 .bg{position:absolute;inset:0 0 auto 0;height:1600px;z-index:0;pointer-events:none;overflow:hidden}
 .fog{position:absolute;border-radius:50%;filter:blur(30px);animation:drift 26s ease-in-out infinite alternate}
 .f2,.f4{animation-duration:32s;animation-direction:alternate-reverse}
@@ -65,29 +67,60 @@ button{font:inherit;color:inherit}
 .fade{position:absolute;left:0;right:0;bottom:0;height:340px;background:linear-gradient(transparent,var(--paper))}
 .page{position:relative;z-index:2}
 
-/* ---------- top ---------- */
-.top{display:flex;justify-content:center;padding:26px 0 0}
-.logo{display:inline-flex;align-items:center;gap:10px}
-.logo svg{width:30px;height:auto}
-.logo__word{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
-.logo__real{font:800 20px/1 'Montserrat',var(--font-b);letter-spacing:.01em;background:linear-gradient(100deg,#C99A45 0%,#B8863A 45%,#9C6F2A 70%,#C4974A 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.logo__sub{margin-top:3px;font:600 6px/1.25 'Montserrat',var(--font-b);letter-spacing:.36em;color:#9C7434}
-
 /* ---------- hero ---------- */
-.hero{text-align:center;padding:clamp(72px,9vw,120px) 0 0}
-.step{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 12px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-family:var(--font-m);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--t2)}
-.step .ok{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:rgba(34,197,94,.16);color:#22c55e}
-.step .ok svg{width:10px;height:10px}
-.step .bar{width:1px;height:12px;background:var(--line)}
-.step em{font-style:normal;color:var(--blue-hi)}
-h1{margin:0 auto;max-width:960px;font-size:clamp(40px,6vw,80px);line-height:1.02;letter-spacing:-1.2px}
-h1 .l+.l{margin-top:.02em}
+.hero{text-align:center;padding:clamp(72px,9vw,116px) 0 0}
+h1{margin:0 auto;max-width:980px;font-size:clamp(40px,6vw,80px);line-height:1.02;letter-spacing:-1.2px}
 h1 .l{display:block}
-.sub{margin:26px auto 0;max-width:560px;text-wrap:balance;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--t2)}
-.sub b{font-weight:400;color:var(--ink)}
+.sub{margin:26px auto 0;max-width:640px;text-wrap:balance;font-size:clamp(17px,1.45vw,19.5px);line-height:1.6;color:var(--t2)}
 
-/* ---------- CTA ---------- */
-.cta{margin-top:30px;display:flex;flex-direction:column;align-items:center}
+/* ---------- video ---------- */
+.film{max-width:960px;margin:0 auto;padding:clamp(44px,5vw,60px) 0 0}
+.frame{position:relative;border-radius:26px;padding:10px;
+  background:linear-gradient(rgba(255,255,255,.055),rgba(255,255,255,.02)) padding-box,linear-gradient(150deg,rgba(63,169,255,.6),rgba(22,114,240,.22) 50%,rgba(63,169,255,.4)) border-box;
+  border:1px solid transparent;box-shadow:0 50px 110px rgba(0,0,0,.6),0 0 90px -20px rgba(24,139,246,.45),inset 0 1px 0 rgba(255,255,255,.08)}
+.screen{position:relative;aspect-ratio:16/9;border-radius:17px;overflow:hidden;background:#000 center/cover no-repeat;user-select:none;-webkit-user-select:none}
+.screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;cursor:pointer}
+
+/* start / replay layer */
+.veil{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;border:0;padding:0;cursor:pointer;
+  background:radial-gradient(60% 70% at 50% 50%,rgba(4,7,15,.14),rgba(4,7,15,.58));transition:opacity .5s var(--ease),visibility .5s}
+.veil.gone{opacity:0;visibility:hidden}
+.play{position:relative;display:grid;place-items:center;width:104px;height:104px;border-radius:50%;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:0 20px 50px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .5s var(--ease),background .5s var(--ease)}
+.play::before{content:"";position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(63,169,255,.55);animation:ring 2.6s var(--ease) infinite}
+.play>span{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:var(--grad);box-shadow:0 12px 30px -8px rgba(24,139,246,.9)}
+.play svg{width:24px;height:24px;margin-left:4px;color:#fff}
+.veil.replay .play svg{margin-left:0}
+.veil:hover .play{transform:scale(1.06);background:rgba(255,255,255,.18)}
+.veil:focus-visible .play{outline:2px solid var(--blue-hi);outline-offset:8px}
+@keyframes ring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+.lab{padding:7px 15px;border-radius:999px;background:rgba(4,7,15,.55);border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:14px;color:rgba(255,255,255,.9)}
+
+/* control bar (after the first play) */
+.ctrl{position:absolute;left:12px;right:12px;bottom:12px;z-index:3;display:flex;align-items:center;gap:14px;padding:8px 16px 8px 8px;border-radius:14px;
+  background:rgba(4,7,15,.62);border:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .35s var(--ease),transform .35s var(--ease),visibility .35s}
+.screen.live:hover .ctrl,.screen.live.is-paused .ctrl,.screen.live.touch .ctrl,.screen.live:focus-within .ctrl{opacity:1;visibility:visible;transform:none}
+.cbtn{flex:none;width:38px;height:38px;border:0;border-radius:10px;display:grid;place-items:center;background:transparent;cursor:pointer;transition:background .25s var(--ease)}
+.cbtn:hover{background:rgba(255,255,255,.1)}
+.cbtn:focus-visible{outline:2px solid var(--blue-hi);outline-offset:1px}
+.cbtn svg{width:18px;height:18px;color:#fff}
+.cbtn .i-pause,.cbtn .i-unmuted{display:none}
+.screen:not(.is-paused) .pp .i-play{display:none}
+.screen:not(.is-paused) .pp .i-pause{display:block}
+.screen.is-unmuted .mt .i-muted{display:none}
+.screen.is-unmuted .mt .i-unmuted{display:block}
+.time{flex:none;font-size:13px;color:rgba(255,255,255,.8);font-variant-numeric:tabular-nums;min-width:74px}
+.seek{position:relative;flex:1;height:22px;cursor:pointer;touch-action:none}
+.seek::before{content:"";position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;border-radius:4px;background:rgba(255,255,255,.2)}
+.seek .fill{position:absolute;left:0;top:50%;height:4px;margin-top:-2px;border-radius:4px;background:var(--grad);width:0}
+.seek .knob{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.4);left:0;transform:scale(0);transition:transform .2s var(--ease)}
+.seek:hover .knob,.seek.drag .knob,.screen.touch .seek .knob{transform:scale(1)}
+.seek:focus-visible{outline:2px solid var(--blue-hi);outline-offset:2px;border-radius:6px}
+
+/* ---------- CTA, straight under the video ---------- */
+.cta{display:flex;flex-direction:column;align-items:center;padding:36px 0 0}
 .btn{display:inline-flex;align-items:center;gap:14px;padding:8px 8px 8px 30px;border:0;border-radius:999px;background:var(--grad);color:#fff;font-size:17px;letter-spacing:.2px;cursor:pointer;box-shadow:0 18px 40px -12px rgba(24,139,246,.7),inset 0 1px 0 rgba(255,255,255,.3);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .btn .ic{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.18);transition:transform .4s var(--ease)}
 .btn .ic svg{width:17px;height:17px}
@@ -95,80 +128,50 @@ h1 .l{display:block}
 .btn:hover .ic{transform:translateX(3px)}
 .btn:active{transform:scale(.98)}
 .btn:focus-visible{outline:2px solid var(--blue-hi);outline-offset:4px}
-.risk{margin:14px 0 0;font-family:var(--font-m);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--t4)}
+.btn.nudge{animation:nudge 1.2s var(--ease) 2}
+@keyframes nudge{30%{transform:translateY(-4px) scale(1.03)}60%{transform:none}}
+.risk{margin:14px 0 0;font-size:14.5px;color:var(--t3);text-align:center}
 
-/* ---------- video ---------- */
-.film{padding:clamp(44px,5vw,64px) 0 0}
-.frame{position:relative;max-width:960px;margin:0 auto;border-radius:26px;padding:10px;
-  background:linear-gradient(rgba(255,255,255,.055),rgba(255,255,255,.02)) padding-box,linear-gradient(150deg,rgba(63,169,255,.6),rgba(22,114,240,.22) 50%,rgba(63,169,255,.4)) border-box;
-  border:1px solid transparent;box-shadow:0 50px 110px rgba(0,0,0,.6),0 0 90px -20px rgba(24,139,246,.45),inset 0 1px 0 rgba(255,255,255,.08)}
-.screen{position:relative;aspect-ratio:16/9;border-radius:17px;overflow:hidden;background:#000;box-shadow:0 2px 0 rgba(255,255,255,.08)}
-.screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.veil{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;border:0;padding:0;cursor:pointer;
-  background:radial-gradient(60% 70% at 50% 50%,rgba(4,7,15,.18),rgba(4,7,15,.62)),linear-gradient(transparent 55%,rgba(4,7,15,.55));transition:opacity .6s var(--ease),visibility .6s}
-.veil.gone{opacity:0;visibility:hidden}
-.play{position:relative;display:grid;place-items:center;width:104px;height:104px;border-radius:50%;
-  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  box-shadow:0 20px 50px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .5s var(--ease),background .5s var(--ease)}
-.play::before{content:"";position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(63,169,255,.55);animation:ring 2.6s var(--ease) infinite}
-.play span{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:var(--grad);box-shadow:0 12px 30px -8px rgba(24,139,246,.9)}
-.play svg{width:24px;height:24px;margin-left:4px;color:#fff}
-.veil:hover .play{transform:scale(1.06);background:rgba(255,255,255,.18)}
-.veil:focus-visible .play{outline:2px solid var(--blue-hi);outline-offset:8px}
-@keyframes ring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.35);opacity:0}}
-.veil .lab{padding:7px 14px;border-radius:999px;background:rgba(4,7,15,.5);border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-family:var(--font-m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.86)}
-.mute{position:absolute;right:16px;top:16px;z-index:3;display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(4,7,15,.55);border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-family:var(--font-m);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.8);pointer-events:none;transition:opacity .4s var(--ease)}
-.mute svg{width:13px;height:13px}
-.mute.gone{opacity:0}
-/* once playing with sound: click the picture to pause/resume, thin progress line */
-.prog{position:absolute;left:0;right:0;bottom:0;z-index:3;height:3px;background:rgba(255,255,255,.14);opacity:0;transition:opacity .4s var(--ease)}
-.prog i{display:block;height:100%;width:0;background:var(--grad)}
-.screen.live .prog{opacity:1}
-.paused{position:absolute;inset:0;z-index:2;display:grid;place-items:center;background:rgba(4,7,15,.35);opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s;pointer-events:none}
-.paused span{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:var(--grad);box-shadow:0 12px 30px -8px rgba(24,139,246,.9)}
-.paused svg{width:22px;height:22px;margin-left:3px;color:#fff}
-.screen.live.is-paused .paused{opacity:1;visibility:visible}
-
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.next{max-width:960px;margin:0 auto;padding:28px 0 0}
-.panel{position:relative;border-radius:26px;padding:48px 28px 40px;
-  background:radial-gradient(70% 90% at 50% 0%,rgba(24,139,246,.10),transparent 70%) padding-box,linear-gradient(rgba(7,11,23,.86),rgba(4,7,15,.92)) padding-box,linear-gradient(150deg,rgba(63,169,255,.45),rgba(22,114,240,.14) 50%,rgba(63,169,255,.3)) border-box;
-  border:1px solid transparent;box-shadow:0 40px 90px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.07)}
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));position:relative}
-.steps::before{content:"";position:absolute;top:21px;left:calc(16.66% + 30px);right:calc(16.66% + 30px);height:1px;background:linear-gradient(90deg,rgba(34,197,94,.55),rgba(31,166,255,.8) 50%,rgba(255,255,255,.14) 50.1%)}
-.s{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 14px}
-.s__dot{position:relative;z-index:1;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#070b17;border:1px solid rgba(255,255,255,.16);font-family:var(--font-m);font-size:11px;letter-spacing:.06em;color:var(--t3)}
-.s__dot svg{width:16px;height:16px}
-.s--done .s__dot{background:#0a1a12;border-color:rgba(34,197,94,.55);color:#22c55e}
-.s--now .s__dot{background:var(--grad);border:0;box-shadow:0 0 0 6px rgba(24,139,246,.16),0 12px 30px -8px rgba(24,139,246,.9)}
-.s--now .s__dot i{width:10px;height:10px;border-radius:50%;background:#fff;animation:beat 2s var(--ease) infinite}
-@keyframes beat{50%{transform:scale(.6);opacity:.6}}
-.s__n{margin-top:18px;font-family:var(--font-m);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4)}
-.s--done .s__n{color:rgba(34,197,94,.8)}
-.s--now .s__n{color:var(--blue-hi)}
-.s b{margin-top:8px;font-weight:400;font-size:20px;letter-spacing:-.2px;color:var(--ink)}
-.s:not(.s--now):not(.s--done) b{color:var(--t2)}
-.s__d{margin-top:6px;max-width:250px;text-wrap:balance;font-size:14.5px;line-height:1.55;color:var(--t3)}
-.next .cta{margin-top:40px;padding-top:36px;border-top:1px solid rgba(255,255,255,.08)}
-
-.after{padding:44px 0 0}
-.note{max-width:620px;margin:26px auto 0;padding:16px 20px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid var(--line);font-size:15px;line-height:1.6;color:var(--t2);text-align:center}
-.note b{font-weight:400;color:var(--ink)}
+/* ---------- checklist box ---------- */
+.list{max-width:520px;margin:44px auto 0;border-radius:20px;background:rgba(7,11,23,.78);border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 70px -30px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden}
+.list__head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:18px 22px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
+.list__head h2{font-size:15px;color:var(--t2);letter-spacing:0}
+.list__head span{font-size:13px;color:var(--t4)}
+.list ol{list-style:none;margin:0;padding:0}
+.row{display:flex;align-items:center;gap:14px;padding:16px 22px}
+.row+.row{border-top:1px solid rgba(255,255,255,.06)}
+.mk{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(255,255,255,.22)}
+.mk svg{width:12px;height:12px}
+.row b{flex:1;font-weight:400;font-size:17px;color:var(--t2)}
+.row em{flex:none;font-style:normal;font-size:14px;color:var(--t4)}
+.row--done .mk{border:0;background:#22c55e;color:#04110a}
+.row--done b{color:var(--t3)}
+.row--now{background:linear-gradient(90deg,rgba(24,139,246,.12),rgba(24,139,246,0) 70%)}
+.row--now .mk{border-color:var(--blue-hi)}
+.row--now .mk i{width:8px;height:8px;border-radius:50%;background:var(--blue-hi)}
+.row--now b{color:var(--ink)}
+.row--now em{color:var(--blue-hi)}
 
 .foot{margin-top:clamp(80px,9vw,112px);padding:30px 0 40px;border-top:1px solid rgba(255,255,255,.08);text-align:center}
-.foot .logo{opacity:.7}
-.foot p{max-width:720px;margin:16px auto 0;font-family:var(--font-m);font-size:9.5px;line-height:1.8;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.28)}
+.logo{display:inline-flex;align-items:center;gap:10px;opacity:.75}
+.logo svg{width:30px;height:auto}
+.logo__word{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+.logo__real{font:800 20px/1 'Montserrat',var(--font-b);letter-spacing:.01em;background:linear-gradient(100deg,#C99A45 0%,#B8863A 45%,#9C6F2A 70%,#C4974A 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo__sub{margin-top:3px;font:600 6px/1.25 'Montserrat',var(--font-b);letter-spacing:.36em;color:#9C7434}
+.foot p{max-width:680px;margin:16px auto 0;font-size:12px;line-height:1.7;color:rgba(255,255,255,.3)}
 
 /* ---------- modal (form) ---------- */
-.modal{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s}
-.modal.open{opacity:1;visibility:visible}
+.modal{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .45s var(--ease),visibility .45s}
+.modal.open{opacity:1;visibility:visible;pointer-events:auto}
+/* form_embed.js forces these inline on the iframe; keep it dead while the modal is closed */
+.modal:not(.open) iframe{visibility:hidden!important;pointer-events:none!important}
 .modal__scrim{position:fixed;inset:0;background:rgba(2,4,10,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .modal__card{position:relative;width:100%;max-width:680px;margin:auto;border-radius:24px;padding:10px;
   background:linear-gradient(rgba(255,255,255,.06),rgba(255,255,255,.02)) padding-box,linear-gradient(130deg,rgba(63,169,255,.55),rgba(22,114,240,.28) 46%,rgba(63,169,255,.45)) border-box;
   border:1px solid transparent;box-shadow:0 50px 120px rgba(0,0,0,.7);transform:translateY(24px) scale(.98);transition:transform .6s var(--ease)}
 .modal.open .modal__card{transform:none}
-.modal__bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 8px 14px 12px}
-.modal__bar .t{font-family:var(--font-m);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink)}
+.modal__bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 8px 14px 14px}
+.modal__bar .t{font-size:15px;color:var(--ink)}
 .modal__bar .t em{font-style:normal;color:var(--t3)}
 .x{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,255,255,.06);cursor:pointer;transition:background .3s var(--ease)}
 .x:hover{background:rgba(255,255,255,.14)}
@@ -177,44 +180,37 @@ h1 .l{display:block}
 
 /* entrance */
 .rise{opacity:0;transform:translateY(16px);filter:blur(6px);animation:rise 1.1s var(--ease) forwards}
-.r1{animation-delay:.05s}.r2{animation-delay:.15s}.r3{animation-delay:.27s}.r4{animation-delay:.4s}.r5{animation-delay:.55s}
+.r1{animation-delay:.05s}.r2{animation-delay:.18s}.r3{animation-delay:.32s}.r4{animation-delay:.48s}
 @keyframes rise{to{opacity:1;transform:none;filter:none}}
 @media (prefers-reduced-motion:reduce){.rise{animation:none;opacity:1;transform:none;filter:none}.fog,.play::before{animation:none}}
 
 @media (max-width:640px){
   .wrap{padding:0 16px}
   .hero{padding-top:64px}
-  h1{letter-spacing:-.6px}
-  .next{padding-top:20px}
-  .panel{padding:32px 20px 30px;border-radius:20px}
-  .steps{grid-template-columns:1fr;gap:26px;max-width:320px;margin:0 auto}
-  .steps::before{top:22px;bottom:22px;left:21px;right:auto;width:1px;height:auto;background:linear-gradient(180deg,rgba(34,197,94,.55),rgba(31,166,255,.8) 50%,rgba(255,255,255,.14) 50.1%)}
-  .s{display:grid;grid-template-columns:44px 1fr;column-gap:16px;align-items:start;text-align:left;padding:0}
-  .s__dot{grid-row:1/4}
-  .s__n{margin-top:2px}
-  .s b{margin-top:4px;font-size:18px}
-  .s__d{margin-top:3px;max-width:none;text-wrap:pretty}
-  .next .cta{margin-top:30px;padding-top:28px}
-  .risk{text-align:center;max-width:300px;line-height:1.7}
-  .step{font-size:9.5px;letter-spacing:.12em}
-  h1{font-size:clamp(34px,9.6vw,42px)}
-  h1 .script{font-size:.9em}
+  h1{font-size:clamp(30px,8.5vw,40px);letter-spacing:-.6px}
+  h1 .script{font-size:1.04em}
   .sub{font-size:17px}
-  .btn{font-size:16px;padding-left:24px}
-  .film{padding-top:40px}
+  .film{padding-top:36px}
   .frame{padding:6px;border-radius:20px}
   .screen{border-radius:15px}
-  .play{width:80px;height:80px}
-  .play span{width:54px;height:54px}
-  .play svg{width:20px;height:20px}
-  .veil{gap:14px}
-  .veil .lab{font-size:9px;padding:5px 11px}
-  .mute{display:none}
-  .risk{font-size:9.5px;letter-spacing:.1em}
-  .play{width:68px!important;height:68px!important}
-  .play span{width:46px!important;height:46px!important}
-  .play svg{width:17px!important;height:17px!important}
+  .play{width:72px;height:72px}
+  .play>span{width:50px;height:50px}
+  .play svg{width:18px;height:18px;margin-left:3px}
   .play::before{inset:-8px}
+  .veil{gap:12px}
+  .lab{font-size:12.5px;padding:5px 12px}
+  .ctrl{left:6px;right:6px;bottom:6px;gap:8px;padding:4px 10px 4px 4px;border-radius:11px}
+  .cbtn{width:32px;height:32px}
+  .cbtn svg{width:16px;height:16px}
+  .time{font-size:11.5px;min-width:62px}
+  .cta{padding-top:30px}
+  .btn{font-size:16px;padding-left:24px}
+  .risk{font-size:14px;max-width:300px}
+  .list{margin-top:36px;border-radius:18px}
+  .list__head{padding:16px 18px 12px}
+  .row{padding:14px 18px;gap:12px}
+  .row b{font-size:16px}
+  .row em{font-size:13px}
   .modal{padding:12px 8px}
   .modal__card{padding:6px;border-radius:20px}
 }
@@ -237,6 +233,11 @@ h1 .l{display:block}
     </symbol>
     <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="tri" viewBox="0 0 24 24"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z" fill="currentColor"/></symbol>
+    <symbol id="bars" viewBox="0 0 24 24"><rect x="6" y="4.5" width="4" height="15" rx="1.2" fill="currentColor"/><rect x="14" y="4.5" width="4" height="15" rx="1.2" fill="currentColor"/></symbol>
+    <symbol id="replay" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="spk-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4z" fill="currentColor"/><path d="M22 9l-6 6M16 9l6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="spk-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="check" viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
 
@@ -245,70 +246,55 @@ h1 .l{display:block}
 
   <div class="page">
     <div class="wrap">
-
       <main>
         <section class="hero" aria-labelledby="h1">
           <h1 id="h1" class="rise r1">
-            <span class="l">Your call is booked.</span>
-            <span class="l"><span class="script grad-txt">Now let's make it count.</span></span>
+            <span class="l">Your onboarding starts</span>
+            <span class="l"><span class="script grad-txt">before the call does.</span></span>
           </h1>
-          <p class="sub rise r2">Watch this 36-second video, then fill out your onboarding assessment. <b>Three minutes now saves thirty on the call.</b></p>
+          <p class="sub rise r2">Watch this 36-second message, then fill out your onboarding form. Your GoHighLevel specialist uses it to set up your account before you ever get on the call.</p>
         </section>
 
-        <section class="film rise r3" aria-label="Video from the Real Insurance Group team">
+        <section class="film rise r3" aria-label="Onboarding video">
           <div class="frame">
-            <div class="screen" id="screen">
-              <video id="vid" src="https://assets.cdn.filesafe.space/TmgbRF4QVy9W3Iy51EJF/media/6abb102cf6972e3b5225ecb5.mp4" autoplay muted loop playsinline preload="auto" aria-label="Why the onboarding assessment matters"></video>
-              <span class="mute" id="mute" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>Preview · Muted</span>
+            <div class="screen" id="screen" style="background-image:url(assets/poster.jpg)">
+              <video id="vid" src="assets/onboarding.mp4" poster="assets/poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="One final step before your onboarding call"></video>
               <button class="veil" id="veil" type="button" aria-label="Play the video from the start with sound">
-                <span class="play"><span><svg><use href="#tri"/></svg></span></span>
-                <span class="lab">Tap To Watch With Sound</span>
+                <span class="play"><span><svg><use id="veil-ic" href="#tri"/></svg></span></span>
+                <span class="lab" id="veil-lab">Watch With Sound</span>
               </button>
-              <div class="paused" aria-hidden="true"><span><svg><use href="#tri"/></svg></span></div>
-              <div class="prog" aria-hidden="true"><i id="bar"></i></div>
+              <div class="ctrl" id="ctrl">
+                <button class="cbtn pp" id="pp" type="button" aria-label="Pause"><svg class="i-play"><use href="#tri"/></svg><svg class="i-pause"><use href="#bars"/></svg></button>
+                <span class="time" id="time">0:00 / 0:36</span>
+                <div class="seek" id="seek" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="36" aria-valuenow="0"><span class="fill" id="fill"></span><span class="knob" id="knob"></span></div>
+                <button class="cbtn mt" id="mt" type="button" aria-label="Mute"><svg class="i-muted"><use href="#spk-off"/></svg><svg class="i-unmuted"><use href="#spk-on"/></svg></button>
+              </div>
             </div>
           </div>
         </section>
 
-        <section class="next rise r4" aria-labelledby="steps-h">
-          <h2 id="steps-h" class="sr">Your three steps</h2>
-          <div class="panel">
-          <ol class="steps">
-            <li class="s s--done">
-              <span class="s__dot" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span class="s__n">Step 01 · Done</span>
-              <b>Call Booked</b>
-              <span class="s__d">Your time is on the calendar.</span>
-            </li>
-            <li class="s s--now" aria-current="step">
-              <span class="s__dot" aria-hidden="true"><i></i></span>
-              <span class="s__n">Step 02 · Now</span>
-              <b>Submit Your Assessment</b>
-              <span class="s__d">About 3 minutes. We read it before we talk.</span>
-            </li>
-            <li class="s">
-              <span class="s__dot" aria-hidden="true">03</span>
-              <span class="s__n">Step 03 · Next</span>
-              <b>Call Confirmed</b>
-              <span class="s__d">Your call stays locked in once it's received.</span>
-            </li>
+        <div class="cta rise r4">
+          <button class="btn" id="cta" type="button" data-open-form>Complete My Onboarding Form<span class="ic" aria-hidden="true"><svg><use href="#arrow"/></svg></span></button>
+          <p class="risk">Short on time? Come back to this page anytime before your call.</p>
+        </div>
+
+        <section class="list rise r4" aria-labelledby="list-h">
+          <div class="list__head"><h2 id="list-h">Before your call</h2><span>1 of 3 done</span></div>
+          <ol>
+            <li class="row row--done"><span class="mk" aria-hidden="true"><svg><use href="#check"/></svg></span><b>Call booked</b><em>Done</em></li>
+            <li class="row row--now" aria-current="step"><span class="mk" aria-hidden="true"><i></i></span><b>Onboarding form</b><em>About 3 min</em></li>
+            <li class="row"><span class="mk" aria-hidden="true"></span><b>Appointment confirmed</b><em>Once it's in</em></li>
           </ol>
-          <div class="cta">
-            <button class="btn" type="button" data-open-form>Complete My Assessment<span class="ic" aria-hidden="true"><svg><use href="#arrow"/></svg></span></button>
-            <p class="risk">Required before your call · Not done in time, the call gets rescheduled</p>
-          </div>
-          </div>
         </section>
       </main>
 
       <footer class="foot">
-        <span class="logo" aria-label="The Real Insurance Group" style="justify-content:center">
+        <span class="logo" aria-label="The Real Insurance Group">
           <svg viewBox="0 0 100 115" aria-hidden="true"><use href="#rig-mark"/></svg>
           <span class="logo__word" aria-hidden="true"><span class="logo__real">REAL</span><span class="logo__sub">INSURANCE<br>GROUP</span></span>
         </span>
         <p>(C) 2026 The Real Insurance Group. All rights reserved. Nothing on this page is a guarantee of income; results depend on your effort, market, licensing and experience. This is a training and software membership. It is not affiliated with or endorsed by the Centers for Medicare and Medicaid Services, the U.S. Government, or any government agency.</p>
       </footer>
-
     </div>
   </div>
 </div>
@@ -318,8 +304,8 @@ h1 .l{display:block}
   <div class="modal__scrim" data-close-form></div>
   <div class="modal__card">
     <div class="modal__bar">
-      <span class="t" id="modal-t">Onboarding Assessment <em>· About 3 Min</em></span>
-      <button class="x" type="button" data-close-form aria-label="Close the assessment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <span class="t" id="modal-t">Onboarding Form <em>· About 3 min</em></span>
+      <button class="x" type="button" data-close-form aria-label="Close the form"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <div class="form-screen">
       <iframe src="https://link.realinsurancecrm.com/widget/survey/lq6V9oxbZIH8Hfw3TSkG" style="border:none;width:100%;" scrolling="no" id="lq6V9oxbZIH8Hfw3TSkG" title="survey" data-cookie-consent="true" data-cookie-consent-provider="auto"></iframe>
@@ -331,34 +317,80 @@ h1 .l{display:block}
 <script>
 (function(){
   var vid=document.getElementById('vid'),screen=document.getElementById('screen'),
-      veil=document.getElementById('veil'),mute=document.getElementById('mute'),bar=document.getElementById('bar');
+      veil=document.getElementById('veil'),veilIc=document.getElementById('veil-ic'),veilLab=document.getElementById('veil-lab'),
+      pp=document.getElementById('pp'),mt=document.getElementById('mt'),seek=document.getElementById('seek'),
+      fill=document.getElementById('fill'),knob=document.getElementById('knob'),time=document.getElementById('time'),
+      cta=document.getElementById('cta'),modal=document.getElementById('modal'),hideT=null,last=null;
 
-  /* muted background preview; some browsers need a nudge */
+  function fmt(t){t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+':'+('0'+t%60).slice(-2);}
+  function paint(){
+    var d=vid.duration||36,p=Math.min(1,(vid.currentTime||0)/d);
+    fill.style.width=knob.style.left=(p*100)+'%';
+    time.textContent=fmt(vid.currentTime)+' / '+fmt(d);
+    seek.setAttribute('aria-valuenow',Math.round(vid.currentTime||0));
+  }
+  function sync(){
+    screen.classList.toggle('is-paused',vid.paused);
+    screen.classList.toggle('is-unmuted',!vid.muted);
+    pp.setAttribute('aria-label',vid.paused?'Play':'Pause');
+    mt.setAttribute('aria-label',vid.muted?'Unmute':'Mute');
+  }
+
+  /* muted background preview */
   var p=vid.play(); if(p&&p.catch)p.catch(function(){});
 
-  /* play button: restart from 0:00 with sound */
+  /* big button: from the top, with sound (also used for replay) */
   veil.addEventListener('click',function(){
     vid.loop=false; vid.muted=false; vid.currentTime=0;
-    vid.play().catch(function(){ vid.muted=true; vid.play(); });
-    veil.classList.add('gone'); mute.classList.add('gone'); screen.classList.add('live');
+    var q=vid.play(); if(q&&q.catch)q.catch(function(){ vid.muted=true; vid.play(); });
+    veil.classList.add('gone'); veil.classList.remove('replay'); screen.classList.add('live');
+    sync();
   });
-  /* after that, the picture itself toggles pause */
-  vid.addEventListener('click',function(){
+
+  function toggle(){ if(!screen.classList.contains('live'))return; if(vid.paused)vid.play(); else vid.pause(); }
+  vid.addEventListener('click',toggle);
+  pp.addEventListener('click',toggle);
+  mt.addEventListener('click',function(){ vid.muted=!vid.muted; sync(); });
+  ['play','pause','volumechange'].forEach(function(e){ vid.addEventListener(e,sync); });
+  vid.addEventListener('timeupdate',paint);
+  vid.addEventListener('loadedmetadata',paint);
+
+  /* scrubbing */
+  function seekTo(x){ var r=seek.getBoundingClientRect(),f=Math.min(1,Math.max(0,(x-r.left)/r.width)); if(vid.duration)vid.currentTime=f*vid.duration; paint(); }
+  seek.addEventListener('pointerdown',function(e){ seek.classList.add('drag'); seek.setPointerCapture(e.pointerId); seekTo(e.clientX); });
+  seek.addEventListener('pointermove',function(e){ if(seek.classList.contains('drag'))seekTo(e.clientX); });
+  seek.addEventListener('pointerup',function(){ seek.classList.remove('drag'); });
+  seek.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){vid.currentTime=Math.min(vid.duration||36,vid.currentTime+5);e.preventDefault();}
+    if(e.key==='ArrowLeft'){vid.currentTime=Math.max(0,vid.currentTime-5);e.preventDefault();}
+  });
+
+  /* touch screens have no hover: show the bar for a few seconds after each tap */
+  screen.addEventListener('touchstart',function(){
     if(!screen.classList.contains('live'))return;
-    if(vid.paused){vid.play();}else{vid.pause();}
+    screen.classList.add('touch'); clearTimeout(hideT);
+    hideT=setTimeout(function(){ if(!vid.paused)screen.classList.remove('touch'); },3000);
+  },{passive:true});
+
+  /* space bar toggles while the page (not the form) has focus */
+  document.addEventListener('keydown',function(e){
+    if(e.code!=='Space'||modal.classList.contains('open'))return;
+    var t=e.target; if(t&&(t.tagName==='BUTTON'||t.tagName==='INPUT'||t.tagName==='TEXTAREA'||t===seek))return;
+    if(screen.classList.contains('live')){ e.preventDefault(); toggle(); }
   });
-  vid.addEventListener('pause',function(){ if(screen.classList.contains('live'))screen.classList.add('is-paused'); });
-  vid.addEventListener('play',function(){ screen.classList.remove('is-paused'); });
-  vid.addEventListener('timeupdate',function(){ if(vid.duration)bar.style.width=(vid.currentTime/vid.duration*100)+'%'; });
-  vid.addEventListener('ended',function(){ openForm(); });
-  screen.classList.toggle('is-paused',false);
+
+  /* end: offer a replay and point at the button */
+  vid.addEventListener('ended',function(){
+    veilIc.setAttribute('href','#replay'); veilLab.textContent='Watch Again';
+    veil.classList.add('replay'); veil.classList.remove('gone'); screen.classList.remove('live');
+    cta.classList.remove('nudge'); void cta.offsetWidth; cta.classList.add('nudge');
+  });
 
   /* form modal */
-  var modal=document.getElementById('modal'),last=null;
   function openForm(){
     last=document.activeElement;
-    modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('locked');
     if(!vid.paused && screen.classList.contains('live'))vid.pause();
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.classList.add('locked');
     setTimeout(function(){ modal.querySelector('.x').focus(); },60);
   }
   function closeForm(){
@@ -368,6 +400,7 @@ h1 .l{display:block}
   document.querySelectorAll('[data-open-form]').forEach(function(b){ b.addEventListener('click',openForm); });
   document.querySelectorAll('[data-close-form]').forEach(function(b){ b.addEventListener('click',closeForm); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&modal.classList.contains('open'))closeForm(); });
+  paint();
 })();
 </script>
 </body>
