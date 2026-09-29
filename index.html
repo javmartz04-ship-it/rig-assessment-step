@@ -7,13 +7,13 @@
 <meta name="description" content="One final step before your GoHighLevel onboarding call is confirmed. Watch the short video, then complete your onboarding form.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Questrial&family=Quintessential&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600&family=Inter:wght@400;500&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
 <style>
 /* =====================================================================
-   REAL INSURANCE GROUP · POST-BOOKING ONBOARDING STEP · v3
+   REAL INSURANCE GROUP · POST-BOOKING ONBOARDING STEP · v4
    ---------------------------------------------------------------------
    Skin = approved specialist booking page v10 (night #04070f + blue fog + grain,
-   Questrial / Quintessential script / Montserrat wordmark, one blue gradient).
+   v4: Inter Tight 600 display + Inter body (Javier rejected the script face), Montserrat wordmark, one blue gradient).
    VIDEO: assets/onboarding.mp4 = the client's 4K GHL upload (75MB) re-encoded to
    1080p, faststart. Autoplays muted as a preview; the big play button restarts it
    from 0:00 with sound; then a real control bar (play/pause, scrub, time, mute).
@@ -35,9 +35,8 @@
   --grad:linear-gradient(100deg,#2F7BFF 0%,#1FA6FF 100%);
   --grad-hov:linear-gradient(100deg,#4A8DFF 0%,#3DB4FF 100%);
   --grad-text:linear-gradient(96deg,#1672F0 0%,#188BF6 55%,#3FA9FF 100%);
-  --font-b:Questrial,system-ui,-apple-system,"Segoe UI",sans-serif;
-  --font-s:Quintessential,Questrial,serif;
-  --font-m:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --font-b:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-d:"Inter Tight",Inter,system-ui,-apple-system,sans-serif;
   --ease:cubic-bezier(.16,1,.3,1);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -48,8 +47,7 @@ img,svg{display:block}
 h1,h2{margin:0;font-weight:400}
 button{font:inherit;color:inherit}
 .wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 24px}
-.script{font-family:var(--font-s);font-style:italic;font-weight:500}
-.grad-txt{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;padding-right:.18em;margin-right:-.18em;padding-bottom:.16em;margin-bottom:-.16em}
+.grad-txt{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;padding-right:.18em;margin-right:-.18em;padding-bottom:.08em;margin-bottom:-.08em}
 
 #rig{position:relative;min-height:100vh;overflow:hidden;isolation:isolate}
 
@@ -69,16 +67,16 @@ button{font:inherit;color:inherit}
 
 /* ---------- hero ---------- */
 .hero{text-align:center;padding:clamp(72px,9vw,116px) 0 0}
-h1{margin:0 auto;max-width:980px;font-size:clamp(40px,6vw,80px);line-height:1.02;letter-spacing:-1.2px}
+h1{margin:0 auto;max-width:980px;font-family:var(--font-d);font-weight:600;font-size:clamp(40px,5.6vw,76px);line-height:1.05;letter-spacing:-.028em}
 h1 .l{display:block}
-.sub{margin:26px auto 0;max-width:640px;text-wrap:balance;font-size:clamp(17px,1.45vw,19.5px);line-height:1.6;color:var(--t2)}
+.sub{margin:24px auto 0;max-width:560px;text-wrap:balance;font-size:clamp(17px,1.4vw,19px);line-height:1.6;letter-spacing:-.01em;color:rgba(255,255,255,.64)}
 
 /* ---------- video ---------- */
 .film{max-width:960px;margin:0 auto;padding:clamp(44px,5vw,60px) 0 0}
-.frame{position:relative;border-radius:26px;padding:10px;
-  background:linear-gradient(rgba(255,255,255,.055),rgba(255,255,255,.02)) padding-box,linear-gradient(150deg,rgba(63,169,255,.6),rgba(22,114,240,.22) 50%,rgba(63,169,255,.4)) border-box;
+.frame{position:relative;border-radius:24px;padding:7px;
+  background:linear-gradient(rgba(255,255,255,.05),rgba(255,255,255,.02)) padding-box,linear-gradient(160deg,rgba(255,255,255,.28),rgba(255,255,255,.06) 40%,rgba(63,169,255,.28)) border-box;
   border:1px solid transparent;box-shadow:0 50px 110px rgba(0,0,0,.6),0 0 90px -20px rgba(24,139,246,.45),inset 0 1px 0 rgba(255,255,255,.08)}
-.screen{position:relative;aspect-ratio:16/9;border-radius:17px;overflow:hidden;background:#000 center/cover no-repeat;user-select:none;-webkit-user-select:none}
+.screen{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000 center/cover no-repeat;user-select:none;-webkit-user-select:none}
 .screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;cursor:pointer}
 
 /* start / replay layer */
@@ -95,7 +93,7 @@ h1 .l{display:block}
 .veil:hover .play{transform:scale(1.06);background:rgba(255,255,255,.18)}
 .veil:focus-visible .play{outline:2px solid var(--blue-hi);outline-offset:8px}
 @keyframes ring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.35);opacity:0}}
-.lab{padding:7px 15px;border-radius:999px;background:rgba(4,7,15,.55);border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:14px;color:rgba(255,255,255,.9)}
+.lab{padding:7px 15px;font-weight:500;letter-spacing:-.005em;border-radius:999px;background:rgba(4,7,15,.55);border:1px solid rgba(255,255,255,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:14px;color:rgba(255,255,255,.9)}
 
 /* control bar (after the first play) */
 .ctrl{position:absolute;left:12px;right:12px;bottom:12px;z-index:3;display:flex;align-items:center;gap:14px;padding:8px 16px 8px 8px;border-radius:14px;
@@ -120,8 +118,8 @@ h1 .l{display:block}
 .seek:focus-visible{outline:2px solid var(--blue-hi);outline-offset:2px;border-radius:6px}
 
 /* ---------- CTA, straight under the video ---------- */
-.cta{display:flex;flex-direction:column;align-items:center;padding:36px 0 0}
-.btn{display:inline-flex;align-items:center;gap:14px;padding:8px 8px 8px 30px;border:0;border-radius:999px;background:var(--grad);color:#fff;font-size:17px;letter-spacing:.2px;cursor:pointer;box-shadow:0 18px 40px -12px rgba(24,139,246,.7),inset 0 1px 0 rgba(255,255,255,.3);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.cta{display:flex;flex-direction:column;align-items:center;padding:40px 0 0}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:8px 8px 8px 30px;border:0;border-radius:999px;background:var(--grad);color:#fff;font-size:16.5px;font-weight:500;letter-spacing:-.01em;cursor:pointer;box-shadow:0 18px 40px -12px rgba(24,139,246,.7),inset 0 1px 0 rgba(255,255,255,.3);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .btn .ic{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.18);transition:transform .4s var(--ease)}
 .btn .ic svg{width:17px;height:17px}
 .btn:hover{background:var(--grad-hov);transform:translateY(-2px);box-shadow:0 24px 50px -12px rgba(24,139,246,.85),inset 0 1px 0 rgba(255,255,255,.3)}
@@ -130,27 +128,8 @@ h1 .l{display:block}
 .btn:focus-visible{outline:2px solid var(--blue-hi);outline-offset:4px}
 .btn.nudge{animation:nudge 1.2s var(--ease) 2}
 @keyframes nudge{30%{transform:translateY(-4px) scale(1.03)}60%{transform:none}}
-.risk{margin:14px 0 0;font-size:14.5px;color:var(--t3);text-align:center}
+.risk{margin:16px 0 0;font-size:14px;color:var(--t4);text-align:center}
 
-/* ---------- checklist box ---------- */
-.list{max-width:520px;margin:44px auto 0;border-radius:20px;background:rgba(7,11,23,.78);border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 70px -30px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden}
-.list__head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:18px 22px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
-.list__head h2{font-size:15px;color:var(--t2);letter-spacing:0}
-.list__head span{font-size:13px;color:var(--t4)}
-.list ol{list-style:none;margin:0;padding:0}
-.row{display:flex;align-items:center;gap:14px;padding:16px 22px}
-.row+.row{border-top:1px solid rgba(255,255,255,.06)}
-.mk{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(255,255,255,.22)}
-.mk svg{width:12px;height:12px}
-.row b{flex:1;font-weight:400;font-size:17px;color:var(--t2)}
-.row em{flex:none;font-style:normal;font-size:14px;color:var(--t4)}
-.row--done .mk{border:0;background:#22c55e;color:#04110a}
-.row--done b{color:var(--t3)}
-.row--now{background:linear-gradient(90deg,rgba(24,139,246,.12),rgba(24,139,246,0) 70%)}
-.row--now .mk{border-color:var(--blue-hi)}
-.row--now .mk i{width:8px;height:8px;border-radius:50%;background:var(--blue-hi)}
-.row--now b{color:var(--ink)}
-.row--now em{color:var(--blue-hi)}
 
 .foot{margin-top:clamp(80px,9vw,112px);padding:30px 0 40px;border-top:1px solid rgba(255,255,255,.08);text-align:center}
 .logo{display:inline-flex;align-items:center;gap:10px;opacity:.75}
@@ -187,11 +166,10 @@ h1 .l{display:block}
 @media (max-width:640px){
   .wrap{padding:0 16px}
   .hero{padding-top:64px}
-  h1{font-size:clamp(30px,8.5vw,40px);letter-spacing:-.6px}
-  h1 .script{font-size:1.04em}
+  h1{font-size:clamp(32px,9vw,40px);letter-spacing:-.03em}
   .sub{font-size:17px}
   .film{padding-top:36px}
-  .frame{padding:6px;border-radius:20px}
+  .frame{padding:5px;border-radius:19px}
   .screen{border-radius:15px}
   .play{width:72px;height:72px}
   .play>span{width:50px;height:50px}
@@ -206,11 +184,6 @@ h1 .l{display:block}
   .cta{padding-top:30px}
   .btn{font-size:16px;padding-left:24px}
   .risk{font-size:14px;max-width:300px}
-  .list{margin-top:36px;border-radius:18px}
-  .list__head{padding:16px 18px 12px}
-  .row{padding:14px 18px;gap:12px}
-  .row b{font-size:16px}
-  .row em{font-size:13px}
   .modal{padding:12px 8px}
   .modal__card{padding:6px;border-radius:20px}
 }
@@ -249,10 +222,10 @@ h1 .l{display:block}
       <main>
         <section class="hero" aria-labelledby="h1">
           <h1 id="h1" class="rise r1">
-            <span class="l">Your onboarding starts</span>
-            <span class="l"><span class="script grad-txt">before the call does.</span></span>
+            <span class="l">Your account, set up</span>
+            <span class="l"><span class="grad-txt">before the call begins.</span></span>
           </h1>
-          <p class="sub rise r2">Watch this 36-second message, then fill out your onboarding form. Your GoHighLevel specialist uses it to set up your account before you ever get on the call.</p>
+          <p class="sub rise r2">Watch the short message below, then complete your onboarding form. Your specialist will have everything ready the moment you join.</p>
         </section>
 
         <section class="film rise r3" aria-label="Onboarding video">
@@ -277,15 +250,6 @@ h1 .l{display:block}
           <button class="btn" id="cta" type="button" data-open-form>Complete My Onboarding Form<span class="ic" aria-hidden="true"><svg><use href="#arrow"/></svg></span></button>
           <p class="risk">Short on time? Come back to this page anytime before your call.</p>
         </div>
-
-        <section class="list rise r4" aria-labelledby="list-h">
-          <div class="list__head"><h2 id="list-h">Before your call</h2><span>1 of 3 done</span></div>
-          <ol>
-            <li class="row row--done"><span class="mk" aria-hidden="true"><svg><use href="#check"/></svg></span><b>Call booked</b><em>Done</em></li>
-            <li class="row row--now" aria-current="step"><span class="mk" aria-hidden="true"><i></i></span><b>Onboarding form</b><em>About 3 min</em></li>
-            <li class="row"><span class="mk" aria-hidden="true"></span><b>Appointment confirmed</b><em>Once it's in</em></li>
-          </ol>
-        </section>
       </main>
 
       <footer class="foot">

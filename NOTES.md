@@ -38,3 +38,27 @@ collided with them. Label now sits under the play button.
   Mobile: steps go vertical with a rail. Risk line carries the old heads-up ("not done in time, rescheduled").
 - First panel pass used the light glass fill and read washed-out blue over the fog; dark fill (#070b17 at .86) fixed it.
 - Mobile H1 emphasis orphaned "count."; script line set to .9em at phone width.
+
+## v2 feedback (2026-09-29), saved as v2.html
+> "playing the video and pausing the video should be a thing... there's a big issue... I would have the button right
+> directly [under] the video and then like a little box like that down below. But I don't want it to look like AI...
+> the headline is still not good. 'Your call is booked. Now let's make it count.' Come on. We get like premium
+> premium everything... you're almost there now."
+
+## v3 (2026-09-29)
+- **The play/pause bug:** GHL's form_embed.js writes `visibility:visible; pointer-events:auto` INLINE on the survey
+  iframe. A child's visibility:visible overrides a hidden parent, so the closed modal's 840px iframe sat invisibly
+  over the video and ate every click. v1/v2 "tests" clicked via element.click() in JS, which bypasses hit-testing,
+  so they passed. Fix: `.modal:not(.open) iframe{visibility:hidden!important;pointer-events:none!important}`.
+  Verified with real Playwright mouse clicks (locator.click) + elementFromPoint over the video.
+- Real control bar after first play: play/pause, time, scrub (pointer + arrow keys), mute; video click and Space
+  toggle; touch shows the bar 3s. End state = "Watch Again" + button nudge (no longer auto-opens the form).
+- Video: client's GHL upload was 4K 16.5 Mbps / 75 MB for 36s. Re-encoded to 1080p CRF 22 faststart (20 MB) +
+  poster, served from the repo (assets/). For GHL, upload assets/onboarding.mp4 to GHL media or keep the repo up.
+- Copy from the video's own transcript (whisper): H1 "Your onboarding starts / *before the call does.*" Sub: "Watch
+  this 36-second message, then fill out your onboarding form. Your GoHighLevel specialist uses it to set up your
+  account before you ever get on the call." CTA "Complete My Onboarding Form". Risk line from the video: "Short on
+  time? Come back to this page anytime before your call."
+- Layout: headline, sub, video, CTA directly under, then a compact 520px checklist ("Before your call · 1 of 3 done":
+  Call booked / Onboarding form / Appointment confirmed). The v2 glowing-circle stepper with mono STEP 01 labels read
+  AI; the checklist is plain rows, hairlines, no mono. Mono caps removed from footer + labels too.
