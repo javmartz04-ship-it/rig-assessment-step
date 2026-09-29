@@ -74,15 +74,16 @@ button{font:inherit;color:inherit}
 .logo__sub{margin-top:3px;font:600 6px/1.25 'Montserrat',var(--font-b);letter-spacing:.36em;color:#9C7434}
 
 /* ---------- hero ---------- */
-.hero{text-align:center;padding:52px 0 0}
+.hero{text-align:center;padding:clamp(72px,9vw,120px) 0 0}
 .step{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 12px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-family:var(--font-m);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--t2)}
 .step .ok{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:rgba(34,197,94,.16);color:#22c55e}
 .step .ok svg{width:10px;height:10px}
 .step .bar{width:1px;height:12px;background:var(--line)}
 .step em{font-style:normal;color:var(--blue-hi)}
-h1{margin:22px auto 0;max-width:900px;font-size:clamp(38px,5.4vw,68px);line-height:1.04}
+h1{margin:0 auto;max-width:960px;font-size:clamp(40px,6vw,80px);line-height:1.02;letter-spacing:-1.2px}
+h1 .l+.l{margin-top:.02em}
 h1 .l{display:block}
-.sub{margin:18px auto 0;max-width:620px;text-wrap:balance;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--t2)}
+.sub{margin:26px auto 0;max-width:560px;text-wrap:balance;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--t2)}
 .sub b{font-weight:400;color:var(--ink)}
 
 /* ---------- CTA ---------- */
@@ -97,7 +98,7 @@ h1 .l{display:block}
 .risk{margin:14px 0 0;font-family:var(--font-m);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--t4)}
 
 /* ---------- video ---------- */
-.film{padding:56px 0 0}
+.film{padding:clamp(44px,5vw,64px) 0 0}
 .frame{position:relative;max-width:960px;margin:0 auto;border-radius:26px;padding:10px;
   background:linear-gradient(rgba(255,255,255,.055),rgba(255,255,255,.02)) padding-box,linear-gradient(150deg,rgba(63,169,255,.6),rgba(22,114,240,.22) 50%,rgba(63,169,255,.4)) border-box;
   border:1px solid transparent;box-shadow:0 50px 110px rgba(0,0,0,.6),0 0 90px -20px rgba(24,139,246,.45),inset 0 1px 0 rgba(255,255,255,.08)}
@@ -128,11 +129,33 @@ h1 .l{display:block}
 .paused svg{width:22px;height:22px;margin-left:3px;color:#fff}
 .screen.live.is-paused .paused{opacity:1;visibility:visible}
 
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.next{max-width:960px;margin:0 auto;padding:28px 0 0}
+.panel{position:relative;border-radius:26px;padding:48px 28px 40px;
+  background:radial-gradient(70% 90% at 50% 0%,rgba(24,139,246,.10),transparent 70%) padding-box,linear-gradient(rgba(7,11,23,.86),rgba(4,7,15,.92)) padding-box,linear-gradient(150deg,rgba(63,169,255,.45),rgba(22,114,240,.14) 50%,rgba(63,169,255,.3)) border-box;
+  border:1px solid transparent;box-shadow:0 40px 90px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.07)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));position:relative}
+.steps::before{content:"";position:absolute;top:21px;left:calc(16.66% + 30px);right:calc(16.66% + 30px);height:1px;background:linear-gradient(90deg,rgba(34,197,94,.55),rgba(31,166,255,.8) 50%,rgba(255,255,255,.14) 50.1%)}
+.s{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 14px}
+.s__dot{position:relative;z-index:1;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#070b17;border:1px solid rgba(255,255,255,.16);font-family:var(--font-m);font-size:11px;letter-spacing:.06em;color:var(--t3)}
+.s__dot svg{width:16px;height:16px}
+.s--done .s__dot{background:#0a1a12;border-color:rgba(34,197,94,.55);color:#22c55e}
+.s--now .s__dot{background:var(--grad);border:0;box-shadow:0 0 0 6px rgba(24,139,246,.16),0 12px 30px -8px rgba(24,139,246,.9)}
+.s--now .s__dot i{width:10px;height:10px;border-radius:50%;background:#fff;animation:beat 2s var(--ease) infinite}
+@keyframes beat{50%{transform:scale(.6);opacity:.6}}
+.s__n{margin-top:18px;font-family:var(--font-m);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4)}
+.s--done .s__n{color:rgba(34,197,94,.8)}
+.s--now .s__n{color:var(--blue-hi)}
+.s b{margin-top:8px;font-weight:400;font-size:20px;letter-spacing:-.2px;color:var(--ink)}
+.s:not(.s--now):not(.s--done) b{color:var(--t2)}
+.s__d{margin-top:6px;max-width:250px;text-wrap:balance;font-size:14.5px;line-height:1.55;color:var(--t3)}
+.next .cta{margin-top:40px;padding-top:36px;border-top:1px solid rgba(255,255,255,.08)}
+
 .after{padding:44px 0 0}
 .note{max-width:620px;margin:26px auto 0;padding:16px 20px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid var(--line);font-size:15px;line-height:1.6;color:var(--t2);text-align:center}
 .note b{font-weight:400;color:var(--ink)}
 
-.foot{margin-top:88px;padding:30px 0 40px;border-top:1px solid rgba(255,255,255,.08);text-align:center}
+.foot{margin-top:clamp(80px,9vw,112px);padding:30px 0 40px;border-top:1px solid rgba(255,255,255,.08);text-align:center}
 .foot .logo{opacity:.7}
 .foot p{max-width:720px;margin:16px auto 0;font-family:var(--font-m);font-size:9.5px;line-height:1.8;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.28)}
 
@@ -160,9 +183,22 @@ h1 .l{display:block}
 
 @media (max-width:640px){
   .wrap{padding:0 16px}
-  .hero{padding-top:38px}
+  .hero{padding-top:64px}
+  h1{letter-spacing:-.6px}
+  .next{padding-top:20px}
+  .panel{padding:32px 20px 30px;border-radius:20px}
+  .steps{grid-template-columns:1fr;gap:26px;max-width:320px;margin:0 auto}
+  .steps::before{top:22px;bottom:22px;left:21px;right:auto;width:1px;height:auto;background:linear-gradient(180deg,rgba(34,197,94,.55),rgba(31,166,255,.8) 50%,rgba(255,255,255,.14) 50.1%)}
+  .s{display:grid;grid-template-columns:44px 1fr;column-gap:16px;align-items:start;text-align:left;padding:0}
+  .s__dot{grid-row:1/4}
+  .s__n{margin-top:2px}
+  .s b{margin-top:4px;font-size:18px}
+  .s__d{margin-top:3px;max-width:none;text-wrap:pretty}
+  .next .cta{margin-top:30px;padding-top:28px}
+  .risk{text-align:center;max-width:300px;line-height:1.7}
   .step{font-size:9.5px;letter-spacing:.12em}
-  h1{font-size:clamp(34px,10vw,44px)}
+  h1{font-size:clamp(34px,9.6vw,42px)}
+  h1 .script{font-size:.9em}
   .sub{font-size:17px}
   .btn{font-size:16px;padding-left:24px}
   .film{padding-top:40px}
@@ -210,28 +246,16 @@ h1 .l{display:block}
   <div class="page">
     <div class="wrap">
 
-      <header class="top rise r1">
-        <span class="logo" aria-label="The Real Insurance Group">
-          <svg viewBox="0 0 100 115" aria-hidden="true"><use href="#rig-mark"/></svg>
-          <span class="logo__word" aria-hidden="true"><span class="logo__real">REAL</span><span class="logo__sub">INSURANCE<br>GROUP</span></span>
-        </span>
-      </header>
-
       <main>
         <section class="hero" aria-labelledby="h1">
-          <p class="step rise r2"><span class="ok" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Call Booked<span class="bar" aria-hidden="true"></span><em>Step 2 of 2</em></p>
-          <h1 id="h1" class="rise r3">
-            <span class="l">You're booked. One more step</span>
-            <span class="l"><span class="script grad-txt">before we talk.</span></span>
+          <h1 id="h1" class="rise r1">
+            <span class="l">Your call is booked.</span>
+            <span class="l"><span class="script grad-txt">Now let's make it count.</span></span>
           </h1>
-          <p class="sub rise r4">Watch this short video, then complete your onboarding assessment. <b>It takes about 3 minutes</b> and lets us walk into your call already knowing your setup.</p>
-          <div class="cta rise r5">
-            <button class="btn" type="button" data-open-form>Complete My Assessment<span class="ic" aria-hidden="true"><svg><use href="#arrow"/></svg></span></button>
-            <p class="risk">Required before your call · About 3 minutes</p>
-          </div>
+          <p class="sub rise r2">Watch this 36-second video, then fill out your onboarding assessment. <b>Three minutes now saves thirty on the call.</b></p>
         </section>
 
-        <section class="film rise r5" aria-label="Video from the Real Insurance Group team">
+        <section class="film rise r3" aria-label="Video from the Real Insurance Group team">
           <div class="frame">
             <div class="screen" id="screen">
               <video id="vid" src="https://assets.cdn.filesafe.space/TmgbRF4QVy9W3Iy51EJF/media/6abb102cf6972e3b5225ecb5.mp4" autoplay muted loop playsinline preload="auto" aria-label="Why the onboarding assessment matters"></video>
@@ -246,12 +270,34 @@ h1 .l{display:block}
           </div>
         </section>
 
-        <section class="after" aria-label="Complete your assessment">
+        <section class="next rise r4" aria-labelledby="steps-h">
+          <h2 id="steps-h" class="sr">Your three steps</h2>
+          <div class="panel">
+          <ol class="steps">
+            <li class="s s--done">
+              <span class="s__dot" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="s__n">Step 01 · Done</span>
+              <b>Call Booked</b>
+              <span class="s__d">Your time is on the calendar.</span>
+            </li>
+            <li class="s s--now" aria-current="step">
+              <span class="s__dot" aria-hidden="true"><i></i></span>
+              <span class="s__n">Step 02 · Now</span>
+              <b>Submit Your Assessment</b>
+              <span class="s__d">About 3 minutes. We read it before we talk.</span>
+            </li>
+            <li class="s">
+              <span class="s__dot" aria-hidden="true">03</span>
+              <span class="s__n">Step 03 · Next</span>
+              <b>Call Confirmed</b>
+              <span class="s__d">Your call stays locked in once it's received.</span>
+            </li>
+          </ol>
           <div class="cta">
             <button class="btn" type="button" data-open-form>Complete My Assessment<span class="ic" aria-hidden="true"><svg><use href="#arrow"/></svg></span></button>
-            <p class="risk">Required before your call · About 3 minutes</p>
+            <p class="risk">Required before your call · Not done in time, the call gets rescheduled</p>
           </div>
-          <p class="note"><b>Heads up:</b> the assessment is required before your call. If it isn't done in time, the call gets rescheduled. We'll send reminders if it's still open.</p>
+          </div>
         </section>
       </main>
 
